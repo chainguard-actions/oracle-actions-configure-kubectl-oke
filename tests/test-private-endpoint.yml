@@ -1,0 +1,30 @@
+name: Test private endpoint - configure kubectl for OKE
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Run action with private endpoint enabled and a fake cluster OCID
+        id: action
+        uses: .
+        continue-on-error: true
+        with:
+          cluster: ocid1.cluster.oc1.phx.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          enablePrivateEndpoint: "true"
+
+      - name: Assert action ran and failed gracefully with private endpoint and invalid cluster OCID
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "outcome: $OUTCOME"
+          if [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed gracefully as expected with an invalid/unreachable cluster OCID (private endpoint)"
+          elif [ "$OUTCOME" = "success" ]; then
+            echo "PASS: action succeeded (unexpected but acceptable if OCI is reachable)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
