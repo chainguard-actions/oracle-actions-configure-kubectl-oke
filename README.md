@@ -6,9 +6,9 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v1.5.0 | [`v1.5.0`](https://github.com/chainguard-actions/oracle-actions-configure-kubectl-oke/tree/v1.5.0) | [`77a733d`](https://github.com/oracle-actions/configure-kubectl-oke/commit/77a733d79446dabe7bf0e58eb56197d33ce4dc58) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v1.5.0 | [`v1.5.0`](https://github.com/chainguard-actions/oracle-actions-configure-kubectl-oke/tree/v1.5.0) | [`77a733d`](https://github.com/oracle-actions/configure-kubectl-oke/commit/77a733d79446dabe7bf0e58eb56197d33ce4dc58) | [`HARDENING.md`](https://github.com/chainguard-actions/oracle-actions-configure-kubectl-oke/blob/v1.5.0/HARDENING.md) |
 
 ## Privacy
 
